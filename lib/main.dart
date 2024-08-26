@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:food_app/pages/bottomnav.dart';
+import 'package:food_app/pages/Login.dart';
+// import 'package:food_app/pages/bottomnav.dart';
 // import 'package:food_app/pages/home.dart';
 
 void main() {
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: Bottomnav(),
+        home: Login(),
         );
   }
 }

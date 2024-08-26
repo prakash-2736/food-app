@@ -112,13 +112,11 @@ class _HomeState extends State<Home> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              ClipOval(
-                                child: Image.network(
-                                  "images/salad2.jpg",
-                                  height: 140,
-                                  width: 140,
-                                  fit: BoxFit.cover,
-                                ),
+                              Image.asset(
+                                "images/salad3.png",
+                                height: 140,
+                                width: 140,
+                                fit: BoxFit.fill,
                               ),
                               Text(
                                 "Mix Veg Salad",
@@ -150,13 +148,11 @@ class _HomeState extends State<Home> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              ClipOval(
-                                child: Image.network(
-                                  "images/salad2.jpg",
-                                  height: 140,
-                                  width: 140,
-                                  fit: BoxFit.cover,
-                                ),
+                              Image.asset(
+                                "images/salad4.png",
+                                height: 140,
+                                width: 140,
+                                fit: BoxFit.cover,
                               ),
                               Text(
                                 "Japanese Salad",
@@ -191,13 +187,11 @@ class _HomeState extends State<Home> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ClipOval(
-                          child: Image.network(
-                            "images/salad2.jpg",
-                            height: 120,
-                            width: 120,
-                            fit: BoxFit.cover,
-                          ),
+                        Image.asset(
+                          "images/salad5.png",
+                          height: 120,
+                          width: 120,
+                          fit: BoxFit.cover,
                         ),
                         SizedBox(
                           width: 20,
@@ -248,13 +242,11 @@ class _HomeState extends State<Home> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ClipOval(
-                          child: Image.network(
-                            "images/salad2.jpg",
-                            height: 120,
-                            width: 120,
-                            fit: BoxFit.cover,
-                          ),
+                        Image.asset(
+                          "images/salad3.png",
+                          height: 120,
+                          width: 120,
+                          fit: BoxFit.fill,
                         ),
                         SizedBox(
                           width: 20.0,
@@ -264,7 +256,7 @@ class _HomeState extends State<Home> {
                             Container(
                                 width: MediaQuery.of(context).size.width / 2,
                                 child: Text(
-                                  "Veggie Taco Hash",
+                                  "Veggie Taco Hash Salad",
                                   style: Appwidget.semiboldTextFeildStyle(),
                                 )),
                             SizedBox(
