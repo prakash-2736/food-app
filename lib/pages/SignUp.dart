@@ -125,7 +125,7 @@ class _SignupState extends State<Signup> {
                       child: Container(
                         padding: EdgeInsets.only(left: 20, right: 20),
                         width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height / 1.7,
+                        height: MediaQuery.of(context).size.height / 1.9,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(20)),
@@ -197,15 +197,7 @@ class _SignupState extends State<Signup> {
                               SizedBox(
                                 height: 30,
                               ),
-                              Container(
-                                  alignment: Alignment.topRight,
-                                  child: Text(
-                                    "Forgot Password?",
-                                    style: Appwidget.semiboldTextFeildStyle(),
-                                  )),
-                              SizedBox(
-                                height: 30,
-                              ),
+                            
                               GestureDetector(
                                 onTap: () {
                                   registeration();

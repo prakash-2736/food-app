@@ -1,8 +1,9 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, file_names, use_build_context_synchronously
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, file_names, use_build_context_synchronously, body_might_complete_normally_nullable
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/pages/bottomnav.dart';
+import 'package:food_app/pages/forgotpass.dart';
 import 'package:food_app/pages/signUp.dart';
 import 'package:food_app/widgets/widget_support.dart';
 
@@ -151,12 +152,20 @@ class _LoginState extends State<Login> {
                               SizedBox(
                                 height: 30,
                               ),
-                              Container(
-                                  alignment: Alignment.topRight,
-                                  child: Text(
-                                    "Forgot Password?",
-                                    style: Appwidget.semiboldTextFeildStyle(),
-                                  )),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Forgotpass()));
+                                },
+                                child: Container(
+                                    alignment: Alignment.topRight,
+                                    child: Text(
+                                      "Forgot Password?",
+                                      style: Appwidget.semiboldTextFeildStyle(),
+                                    )),
+                              ),
                               SizedBox(
                                 height: 50,
                               ),
