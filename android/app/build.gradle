@@ -3,8 +3,17 @@ plugins {
     id "kotlin-android"
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
 }
+dependencies {
+    // Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:33.2.0')
 
+    // Add Firebase Analytics
+    implementation 'com.google.firebase:firebase-analytics'
+
+    // Add any other Firebase dependencies you need
+}
 android {
     namespace = "com.example.food_app"
     compileSdk = flutter.compileSdkVersion
@@ -34,6 +43,8 @@ android {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig = signingConfigs.debug
         }
     }
