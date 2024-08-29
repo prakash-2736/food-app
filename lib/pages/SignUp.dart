@@ -24,19 +24,28 @@ class _SignupState extends State<Signup> {
 
   final _formkey = GlobalKey<FormState>();
   registeration() async {
+    if (_formkey.currentState!.validate()) {
+      setState(() {
+        email = emailcontroller.text;
+        name = namecontroller.text;
+        password = passwordcontroller.text;
+      });
+    }
     if (password != null) {
       try {
         UserCredential userCredential = await FirebaseAuth.instance
-            .signInWithEmailAndPassword(email: email, password: password);
-
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            backgroundColor: Colors.orangeAccent,
-            content: Text(
-              "Registered Succefully",
-              style: TextStyle(fontSize: 20),
-            )));
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => Bottomnav()));
+            .createUserWithEmailAndPassword(email: email, password: password);
+          await userCredential.user?.updateDisplayName(name);
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              backgroundColor: Colors.orangeAccent,
+              content: Text(
+                "Registered Succefully",
+                style: TextStyle(fontSize: 20),
+              )));
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => Bottomnav()));
+        }
       } on FirebaseAuthException catch (e) {
         if (e.code == "weak-password") {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -45,11 +54,18 @@ class _SignupState extends State<Signup> {
                 "Password Provided is too Weak",
                 style: TextStyle(fontSize: 18),
               )));
-        } else if (e.code == "eamil-already-in-use") {
+        } else if (e.code == "email-already-in-use") {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               backgroundColor: Colors.orangeAccent,
               content: Text(
                 "Account Already exists",
+                style: TextStyle(fontSize: 18),
+              )));
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              backgroundColor: Colors.orangeAccent,
+              content: Text(
+                e.message ?? "Registration Failed",
                 style: TextStyle(fontSize: 18),
               )));
         }
@@ -109,7 +125,7 @@ class _SignupState extends State<Signup> {
                       child: Container(
                         padding: EdgeInsets.only(left: 20, right: 20),
                         width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height / 1.9,
+                        height: MediaQuery.of(context).size.height / 1.7,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(20)),
@@ -192,13 +208,6 @@ class _SignupState extends State<Signup> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  if (_formkey.currentState!.validate()) {
-                                    setState(() {
-                                      email = emailcontroller.text;
-                                      name = namecontroller.text;
-                                      password = passwordcontroller.text;
-                                    });
-                                  }
                                   registeration();
                                 },
                                 child: Material(
