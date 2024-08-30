@@ -4,7 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/pages/Login.dart';
 import 'package:food_app/pages/bottomnav.dart';
+import 'package:food_app/service/database.dart';
 import 'package:food_app/widgets/widget_support.dart';
+import 'package:random_string/random_string.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -35,7 +37,7 @@ class _SignupState extends State<Signup> {
       try {
         UserCredential userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: email, password: password);
-          await userCredential.user?.updateDisplayName(name);
+        await userCredential.user?.updateDisplayName(name);
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               backgroundColor: Colors.orangeAccent,
@@ -43,6 +45,15 @@ class _SignupState extends State<Signup> {
                 "Registered Succefully",
                 style: TextStyle(fontSize: 20),
               )));
+          String Id = randomString(10);
+          Map<String, dynamic> addUserInfo = {
+            "Name": namecontroller.text,
+            "Email": emailcontroller.text,
+            "Wallet": "0",
+            "Id": Id,
+          };
+          await DatabaseMethos().addUserDetail(addUserInfo, Id);
+
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => Bottomnav()));
         }
@@ -197,7 +208,6 @@ class _SignupState extends State<Signup> {
                               SizedBox(
                                 height: 30,
                               ),
-                            
                               GestureDetector(
                                 onTap: () {
                                   registeration();

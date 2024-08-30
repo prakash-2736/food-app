@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, file_names, use_build_context_synchronously, body_might_complete_normally_nullable
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, file_names, use_build_context_synchronously, body_might_complete_normally_nullable, unnecessary_new
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
